@@ -1,7 +1,15 @@
+import { ProductItem } from "../components/ProductItem";
+import { data } from "../utils/data";
+import { Layout } from "../components/Layout";
+
 export default function Home() {
   return (
-    <div>
-      <h6 className="text-3xl font-bold">Amazonka</h6>
-    </div>
+    <Layout>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        {data.map((product) => (
+          <ProductItem key={product.id} product={product} />
+        ))}
+      </div>
+    </Layout>
   );
 }

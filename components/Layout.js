@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function Layout({ title, children }) {
+export const Layout = ({ title, children }) => {
   return (
     <div>
       <Head>
@@ -27,9 +27,9 @@ export default function Layout({ title, children }) {
         </header>
         <main className="flex-grow container m-auto px-5 pt-5">{children}</main>
         <footer className="flex justify-center items-center h-10 shadow-inner">
-          footer
+          Copyright &copy; Amazonka {new Date().getFullYear()}
         </footer>
       </div>
     </div>
   );
-}
+};
