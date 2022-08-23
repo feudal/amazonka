@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { XCircleIcon } from "@heroicons/react/outline";
@@ -8,7 +9,7 @@ import { Layout } from "../components/Layout";
 import { Store } from "../utils/store";
 import { ACTIONS } from "../utils/app-constants";
 
-export default function CartScreen() {
+function CartScreen() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -109,3 +110,5 @@ export default function CartScreen() {
     </Layout>
   );
 }
+
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
