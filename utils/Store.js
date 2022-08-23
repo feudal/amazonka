@@ -10,14 +10,21 @@ function reducer(state, action) {
   switch (action.type) {
     case "CART_ADD_ITEM": {
       const newItem = action.payload;
-      const existItem = state.cart.cartItems.find(
-        (item) => (item.slug = newItem.slug)
-      );
-      const cartItems = existItem
+      const itemExist =
+        state.cart.cartItems.find((item) => item.slug === newItem.slug)
+          ?.length > 0;
+
+      const cartItems = itemExist
         ? state.cart.cartItems.map((item) =>
-            item.name === existItem.name ? newItem : item
+            item.slug === itemExist.slug ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+    case "CART_REMOVE_ITEM": {
+      const cartItems = state.cart.cartItems.filter(
+        (item) => item.slug !== action.payload.slug
+      );
       return { ...state, cart: { ...state.cart, cartItems } };
     }
     default:
