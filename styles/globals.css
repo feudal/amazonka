@@ -18,7 +18,9 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .card {
@@ -33,4 +35,10 @@ a {
 }
 .badge {
   @apply ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white;
+}
+
+input,
+select,
+textarea {
+  @apply rounded border p-2 outline-none ring-indigo-300 focus:ring;
 }
