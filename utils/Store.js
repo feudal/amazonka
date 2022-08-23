@@ -11,13 +11,12 @@ function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.CART_ADD_ITEM: {
       const newItem = action.payload;
-      const itemExist =
-        state.cart.cartItems.find((item) => item.slug === newItem.slug)
-          ?.length > 0;
-
-      const cartItems = itemExist
+      const existItem = state.cart.cartItems.find(
+        (item) => item.slug === newItem.slug
+      );
+      const cartItems = existItem
         ? state.cart.cartItems.map((item) =>
-            item.slug === itemExist.slug ? newItem : item
+            item.name === existItem.name ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
       return { ...state, cart: { ...state.cart, cartItems } };
