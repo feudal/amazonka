@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Layout } from "../../components/Layout";
 import { data } from "../../utils/data";
 import { Store } from "../../utils/store";
+import { ACTIONS } from "../../utils/app-constants";
 
 const ProductScreen = () => {
   const { state, dispatch } = useContext(Store);
@@ -24,7 +25,10 @@ const ProductScreen = () => {
       alert("Sorry, Product is out of stock");
       return;
     }
-    dispatch({ type: "CART_ADD_ITEM", payload: { ...product, quantity } });
+    dispatch({
+      type: ACTIONS.CART_ADD_ITEM,
+      payload: { ...product, quantity },
+    });
     router.push("/cart");
   };
 

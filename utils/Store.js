@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { ACTIONS } from "./app-constants";
 
 export const Store = createContext();
 
@@ -8,7 +9,7 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "CART_ADD_ITEM": {
+    case ACTIONS.CART_ADD_ITEM: {
       const newItem = action.payload;
       const itemExist =
         state.cart.cartItems.find((item) => item.slug === newItem.slug)
@@ -21,7 +22,7 @@ function reducer(state, action) {
         : [...state.cart.cartItems, newItem];
       return { ...state, cart: { ...state.cart, cartItems } };
     }
-    case "CART_REMOVE_ITEM": {
+    case ACTIONS.CART_REMOVE_ITEM: {
       const cartItems = state.cart.cartItems.filter(
         (item) => item.slug !== action.payload.slug
       );

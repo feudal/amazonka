@@ -6,6 +6,7 @@ import { XCircleIcon } from "@heroicons/react/outline";
 
 import { Layout } from "../components/Layout";
 import { Store } from "../utils/store";
+import { ACTIONS } from "../utils/app-constants";
 
 export default function CartScreen() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function CartScreen() {
     cart: { cartItems },
   } = state;
   const removeItemHandler = (item) => {
-    dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+    dispatch({ type: ACTIONS.CART_REMOVE_ITEM, payload: item });
   };
   return (
     <Layout title="Shopping Cart">
