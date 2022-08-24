@@ -1,10 +1,14 @@
+import Cookies from "js-cookie";
 import Head from "next/head";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { Menu } from "@headlessui/react";
 import { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
 import { Store } from "../utils/store";
+import { DropdownLink } from "./DropdownLink";
+import { ACTIONS } from "../utils/app-constants";
 
 export const Layout = ({ title, children }) => {
   const { status, data: session } = useSession();
@@ -14,6 +18,12 @@ export const Layout = ({ title, children }) => {
   useEffect(() => {
     setItemCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
+
+  const logoutHandler = () => {
+    Cookies.remove("cart");
+    dispatch({ type: ACTIONS.CART_RESET });
+    signOut({ callbackUrl: "/login" });
+  };
 
   return (
     <div>
@@ -43,7 +53,25 @@ export const Layout = ({ title, children }) => {
               {status === "loading" ? (
                 "Loading"
               ) : session?.user ? (
-                session.user.name
+                <Menu as="div" className="relative inline-block">
+                  <Menu.Button>{session.user.name}</Menu.Button>
+                  <Menu.Items className="menu-item">
+                    <DropdownLink className="dropdown-link" href="/profile">
+                      Profile
+                    </DropdownLink>
+                    <DropdownLink
+                      className="dropdown-link"
+                      href="/order-history"
+                    >
+                      Order history
+                    </DropdownLink>
+                    <DropdownLink className="dropdown-link" href="/login">
+                      <a href="#" onClick={logoutHandler}>
+                        Logout
+                      </a>
+                    </DropdownLink>
+                  </Menu.Items>
+                </Menu>
               ) : (
                 <Link href="/login">
                   <a className="p-2">Login</a>
