@@ -11,11 +11,11 @@ import { ACTIONS } from "../../utils/app-constants";
 const ProductScreen = () => {
   const { state, dispatch } = useContext(Store);
   const router = useRouter();
-  const { query } = useRouter();
-  const { slug } = query;
-  const product = data.products.find((product) => product.slug === slug);
+  const product = data.products.find(
+    (product) => product.slug === router.query.slug
+  );
 
-  const addToCartHandler = () => {
+  function addToCartHandler() {
     const existItem = state.cart.cartItems.find(
       (item) => item.slug === product.slug
     );
@@ -30,7 +30,7 @@ const ProductScreen = () => {
       payload: { ...product, quantity },
     });
     router.push("/cart");
-  };
+  }
 
   if (!product) return <div>Product not found</div>;
 
