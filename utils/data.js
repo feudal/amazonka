@@ -18,6 +18,7 @@ export const data = {
 
   products: [
     {
+      category: "Sporting Goods",
       name: "Studded short",
       slug: "studded-short",
       price: "114.00",
@@ -29,6 +30,7 @@ export const data = {
       image: "/images/p1.jpg",
     },
     {
+      category: "Sporting Goods",
       name: "Shacket in blue",
       slug: "shacket-in-blue",
       price: "629.00",
@@ -40,6 +42,7 @@ export const data = {
       image: "/images/p2.jpg",
     },
     {
+      category: "Clothing",
       name: "Slim fit grandad shirt",
       slug: "slim-fit-grandad-shirt",
       price: "136.00",
@@ -51,6 +54,7 @@ export const data = {
       image: "/images/p3.jpg",
     },
     {
+      category: "Clothing",
       name: "Hourglass chino trousers in stone",
       slug: "Hourglass-chino-trousers-in-stone",
       price: "382.00",
@@ -62,6 +66,7 @@ export const data = {
       image: "/images/p4.jpg",
     },
     {
+      category: "Clothing",
       name: "T-shirt in cashmere blue",
       slug: "t-shirt-in-cashmere-blue",
       price: "746.00",
@@ -73,6 +78,7 @@ export const data = {
       image: "/images/p5.jpg",
     },
     {
+      category: "Clothing",
       name: "Mensy peg trouser in sand",
       slug: "mensy-peg-trouser-in-sand",
       price: "199.00",
