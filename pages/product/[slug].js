@@ -13,7 +13,7 @@ const ProductScreen = () => {
   const router = useRouter();
   const { query } = useRouter();
   const { slug } = query;
-  const product = data.find((product) => product.slug === slug);
+  const product = data.products.find((product) => product.slug === slug);
 
   const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find(
