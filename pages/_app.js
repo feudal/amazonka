@@ -1,9 +1,10 @@
 import { SessionProvider, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 import { StoreProvider } from "../utils/store";
+
 import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (

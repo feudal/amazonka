@@ -3,10 +3,8 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import CheckoutWizard from "../components/CheckoutWizard";
-import { Layout } from "../components/Layout";
-import { ACTIONS, PAYMENT_METHODS } from "../utils/app-constants";
-import { Store } from "../utils/store";
+import { CheckoutWizard, Layout } from "../components";
+import { ACTIONS, PAYMENT_METHODS, Store } from "../utils";
 
 export default function PaymentScreen() {
   console.log("PAYMENT_METHODS", PAYMENT_METHODS);

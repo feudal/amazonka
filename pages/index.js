@@ -2,12 +2,9 @@ import axios from "axios";
 import { useContext } from "react";
 import { toast } from "react-toastify";
 
-import { Layout } from "../components/Layout";
-import { ProductItem } from "../components/ProductItem";
-import Product from "../models/Product";
-import { ACTIONS } from "../utils/app-constants";
-import db from "../utils/db";
-import { Store } from "../utils/store";
+import { Layout, ProductItem } from "../components";
+import { ACTIONS, db, Store } from "../utils";
+import { Product } from "../models";
 
 export default function Home({ products }) {
   const { state, dispatch } = useContext(Store);

@@ -3,10 +3,8 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-import CheckoutWizard from "../components/CheckoutWizard";
-import { Layout } from "../components/Layout";
-import { ACTIONS } from "../utils/app-constants";
-import { Store } from "../utils/store";
+import { CheckoutWizard, Layout } from "../components";
+import { ACTIONS, Store } from "../utils";
 
 export default function ShippingScreen() {
   const router = useRouter();

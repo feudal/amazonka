@@ -1,14 +1,13 @@
+import { Menu } from "@headlessui/react";
 import Cookies from "js-cookie";
+import { signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
-import { Menu } from "@headlessui/react";
 import { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 
-import { Store } from "../utils/store";
-import { DropdownLink } from "./DropdownLink";
-import { ACTIONS } from "../utils/app-constants";
+import { DropdownLink } from ".";
+import { ACTIONS, Store } from "../utils";
 
 export const Layout = ({ title, children }) => {
   const { status, data: session } = useSession();

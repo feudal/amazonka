@@ -5,11 +5,9 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Layout } from "../../components/Layout";
-import { Store } from "../../utils/store";
-import { ACTIONS } from "../../utils/app-constants";
-import db from "../../utils/db";
-import Product from "../../models/Product";
+import { ACTIONS, db, Store } from "../../utils";
+import { Layout } from "../../components";
+import { Product } from "../../models";
 
 export default function ProductScreen({ product }) {
   const { state, dispatch } = useContext(Store);

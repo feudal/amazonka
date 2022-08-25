@@ -1,7 +1,8 @@
 import React from "react";
+
 import { PAYMENT_STEPS } from "../utils/app-constants";
 
-export default function CheckoutWizard({ activeStep = 0 }) {
+export const CheckoutWizard = ({ activeStep = 0 }) => {
   return (
     <div className="mb-5 flex flex-wrap">
       {PAYMENT_STEPS.map((step, index) => (
@@ -18,4 +19,4 @@ export default function CheckoutWizard({ activeStep = 0 }) {
       ))}
     </div>
   );
-}
+};

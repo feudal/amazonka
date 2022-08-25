@@ -1,11 +1,12 @@
-import Link from "next/link";
-import { useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
-import { useForm } from "react-hook-form";
-import { Layout } from "../components/Layout";
-import { getError } from "../utils/error";
-import { toast } from "react-toastify";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+
+import { Layout } from "../components";
+import { getError } from "../utils";
 
 export default function LoginScreen() {
   const { data: session } = useSession();
