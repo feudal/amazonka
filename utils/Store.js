@@ -53,6 +53,8 @@ function reducer(state, action) {
         },
       };
     }
+    case ACTIONS.CART_CLEAR_ITEMS:
+      return { ...state, cart: { ...state.cart, cartItems: [] } };
     case ACTIONS.SAVE_PAYMENT_METHOD: {
       return {
         ...state,
