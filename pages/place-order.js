@@ -42,7 +42,7 @@ export default function PlaceOrderScreen() {
         totalPrice,
       });
       dispatch({ type: ACTIONS.CART_CLEAR_ITEMS });
-      router.push(`/order/${data._id}`);
+      router.push(`/orders/${data._id}`);
       Cookies.set(
         "cart",
         JSON.stringify({
@@ -51,7 +51,7 @@ export default function PlaceOrderScreen() {
           cartItems: [],
         })
       );
-      router.push(`/order/${data._id}`);
+      router.push(`/orders/${data._id}`);
     } catch (err) {
       setLoading(false);
       toast.error(getError(err));
