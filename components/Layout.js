@@ -60,9 +60,9 @@ export const Layout = ({ title, children }) => {
                     </DropdownLink>
                     <DropdownLink
                       className="dropdown-link"
-                      href="/order-history"
+                      href="/orders-history"
                     >
-                      Order history
+                      Orders history
                     </DropdownLink>
                     <DropdownLink className="dropdown-link" href="/login">
                       <a href="#" onClick={logoutHandler}>

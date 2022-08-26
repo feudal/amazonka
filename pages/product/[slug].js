@@ -1,13 +1,13 @@
 import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
 
-import { ACTIONS, db, Store } from "../../utils";
 import { Layout } from "../../components";
 import { Product } from "../../models";
+import { ACTIONS, db, Store } from "../../utils";
 
 export default function ProductScreen({ product }) {
   const { state, dispatch } = useContext(Store);
