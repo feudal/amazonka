@@ -1,49 +1,68 @@
-import { signIn, useSession } from "next-auth/react";
+import axios from "axios";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 import { Layout } from "../components";
 import { getError } from "../utils";
 
-export default function LoginScreen() {
-  const { data: session } = useSession();
+export default function RegisterScreen() {
   const router = useRouter();
-
-  useEffect(() => {
-    if (session?.user) {
-      router.push(router.query.redirect || "/");
-    }
-  }, [router, session]);
-
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors },
   } = useForm();
-  const submitHandler = async ({ email, password }) => {
+
+  const submitHandler = async ({ name, email, password }) => {
     try {
+      await axios.post("/api/auth/signup", {
+        name,
+        email,
+        password,
+      });
+
       const result = await signIn("credentials", {
         redirect: false,
         email,
         password,
       });
+
       if (result.error) {
         toast.error(result.error);
       }
+      router.push(`/${router.query.redirect || ""}`);
     } catch (err) {
       toast.error(getError(err));
     }
   };
+
   return (
-    <Layout title="Login">
+    <Layout title="Register">
       <form
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >
-        <h1 className="mb-4 text-xl">Login</h1>
+        <h1 className="mb-4 text-xl">Create account</h1>
+
+        <div className="mb-4">
+          <label htmlFor="name">Name</label>
+          <input
+            {...register("name", {
+              required: "Please enter name",
+            })}
+            className="w-full"
+            id="name"
+            autoFocus
+          />
+          {errors.name && (
+            <div className="text-red-500">{errors.name.message}</div>
+          )}
+        </div>
 
         <div className="mb-4">
           <label htmlFor="email">Email</label>
@@ -85,15 +104,33 @@ export default function LoginScreen() {
           )}
         </div>
 
-        <div className="mb-4 ">
-          <button className="primary-button">Login</button>
+        <div className="mb-4">
+          <label htmlFor="confirmPassword">Confirm password</label>
+          <input
+            {...register("confirmPassword", {
+              required: "Please enter confirmation password",
+              validate: (value) =>
+                value === getValues("password") || "The passwords do not match",
+            })}
+            type="password"
+            className="w-full"
+            id="confirmPassword"
+            autoFocus
+          />
+          {errors.confirmPassword && (
+            <div className="text-red-500 ">
+              {errors.confirmPassword.message}
+            </div>
+          )}
         </div>
 
         <div className="mb-4 ">
-          Don&apos;t have an account? &nbsp;
-          <Link href={`register?redirect=${router.query.redirect}`}>
-            Register
-          </Link>
+          <button className="primary-button">Register</button>
+        </div>
+
+        <div className="mb-4 ">
+          Already have an account? &nbsp;
+          <Link href="login">Login</Link>
         </div>
       </form>
     </Layout>
