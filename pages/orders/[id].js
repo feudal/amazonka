@@ -32,7 +32,6 @@ const reducer = (state, action) => {
 
 export default function OrderScreen() {
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
-  console.log("isPending", isPending);
   const {
     query: { id },
   } = useRouter();

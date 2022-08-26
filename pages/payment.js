@@ -7,7 +7,6 @@ import { CheckoutWizard, Layout } from "../components";
 import { ACTIONS, PAYMENT_METHODS, Store } from "../utils";
 
 export default function PaymentScreen() {
-  console.log("PAYMENT_METHODS", PAYMENT_METHODS);
   const router = useRouter();
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const { state, dispatch } = useContext(Store);
