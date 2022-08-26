@@ -39,7 +39,7 @@ export default function ProductScreen({ product }) {
       <div className="py-2">
         <Link href="/">Back to results</Link>
       </div>
-      <div className="grid md:grid-cols-4 md:gap-3">
+      <div className="grid md:grid-cols-4 md:gap-3 items-start">
         <div className="md:col-span-2">
           <Image
             height={640}

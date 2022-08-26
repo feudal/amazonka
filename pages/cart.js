@@ -40,7 +40,7 @@ function CartScreen() {
           Cart is empty. <Link href="/">Go shopping</Link>
         </div>
       ) : (
-        <div className="grid md:grid-cols-4 md:gap-5">
+        <div className="grid md:grid-cols-4 md:gap-5 items-start">
           <div className="overflow-x-auto md:col-span-3">
             <table className="min-w-full ">
               <thead className="border-b">
