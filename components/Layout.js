@@ -66,9 +66,12 @@ export const Layout = ({ title, children }) => {
                         >
                           Products
                         </DropdownLink>
-                        <DropdownLink className="dropdown-link" href="/orders">
+                        <DropdownLink
+                          className="dropdown-link"
+                          href="/orders/list"
+                        >
                           <a href="#" onClick={logoutHandler}>
-                            Orders
+                            Orders list
                           </a>
                         </DropdownLink>
                         <hr />
