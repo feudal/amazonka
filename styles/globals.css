@@ -33,6 +33,9 @@ a {
 .default-button {
   @apply rounded bg-gray-100 py-2 px-4 shadow outline-none hover:bg-gray-200 active:bg-gray-300;
 }
+.danger-button {
+  @apply rounded bg-red-500 py-2 px-4 shadow outline-none hover:bg-red-600 active:bg-red-700 text-white;
+}
 .badge {
   @apply ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white;
 }
