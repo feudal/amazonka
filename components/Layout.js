@@ -55,6 +55,25 @@ export const Layout = ({ title, children }) => {
                 <Menu as="div" className="relative inline-block">
                   <Menu.Button>{session.user.name}</Menu.Button>
                   <Menu.Items className="menu-item">
+                    {session.user.isAdmin && (
+                      <>
+                        <DropdownLink className="dropdown-link" href="/users">
+                          Users
+                        </DropdownLink>
+                        <DropdownLink
+                          className="dropdown-link"
+                          href="/products"
+                        >
+                          Products
+                        </DropdownLink>
+                        <DropdownLink className="dropdown-link" href="/orders">
+                          <a href="#" onClick={logoutHandler}>
+                            Orders
+                          </a>
+                        </DropdownLink>
+                        <hr />
+                      </>
+                    )}
                     <DropdownLink className="dropdown-link" href="/profile">
                       Profile
                     </DropdownLink>
