@@ -1,6 +1,7 @@
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { SessionProvider, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import { StoreProvider } from "../utils";
 
@@ -8,20 +9,23 @@ import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  const queryClient = new QueryClient();
   return (
-    <SessionProvider session={session}>
-      <StoreProvider>
-        <PayPalScriptProvider deferLoading={true}>
-          {Component.auth ? (
-            <Auth>
-              <Component {...pageProps} />{" "}
-            </Auth>
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </PayPalScriptProvider>
-      </StoreProvider>
-    </SessionProvider>
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider session={session}>
+        <StoreProvider>
+          <PayPalScriptProvider deferLoading={true}>
+            {Component.auth ? (
+              <Auth>
+                <Component {...pageProps} />{" "}
+              </Auth>
+            ) : (
+              <Component {...pageProps} />
+            )}
+          </PayPalScriptProvider>
+        </StoreProvider>
+      </SessionProvider>
+    </QueryClientProvider>
   );
 }
 
