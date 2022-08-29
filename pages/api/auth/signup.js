@@ -1,6 +1,6 @@
 import bcryptjs from "bcryptjs";
-import { User } from "../../../models";
 
+import { User } from "../../../models";
 import { db } from "../../../utils";
 
 async function handler(req, res) {
