@@ -2,7 +2,8 @@ import axios from "axios";
 import Link from "next/link";
 import { useQuery } from "react-query";
 
-import { Layout } from "../components";
+import { Layout } from "../../components";
+import { getError } from "../../utils";
 
 function OrdersHistoryScreen() {
   const {
@@ -20,7 +21,7 @@ function OrdersHistoryScreen() {
       {loading ? (
         <div>Loading...</div>
       ) : error ? (
-        <div className="alert-error">{error}</div>
+        <div className="alert-error">{getError(error)}</div>
       ) : (
         <div className="overflow-x-auto">
           <table className="min-w-full">

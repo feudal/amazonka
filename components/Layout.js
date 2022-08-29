@@ -79,7 +79,7 @@ export const Layout = ({ title, children }) => {
                     </DropdownLink>
                     <DropdownLink
                       className="dropdown-link"
-                      href="/orders-history"
+                      href="/orders/history"
                     >
                       Orders history
                     </DropdownLink>
