@@ -1,10 +1,10 @@
 import axios from "axios";
 import React from "react";
-import { useQuery, useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 
-import { Layout } from "../components";
-import { getError } from "../utils";
+import { Layout } from "../../components";
+import { getError } from "../../utils";
 
 function UsersScreen() {
   const queryClient = useQueryClient();
@@ -12,19 +12,19 @@ function UsersScreen() {
     loading,
     error,
     data: users,
-  } = useQuery("users", async () => {
-    const { data } = await axios.get("/api/users");
+  } = useQuery("all-users", async () => {
+    const { data } = await axios.get("/api/admin/users");
     return data;
   });
 
   const { mutate, isLoading } = useMutation(
     async (id) => {
-      await axios.delete(`/api/users/delete?id=${id}`);
+      await axios.delete(`/api/admin/users/delete?id=${id}`);
     },
     {
       onError: (err) => toast.error(getError(err)),
       onSuccess: () => {
-        queryClient.invalidateQueries("users");
+        queryClient.invalidateQueries("all-users");
         toast.success("User deleted");
       },
     }
@@ -77,5 +77,5 @@ function UsersScreen() {
   );
 }
 
-UsersScreen.auth = true;
+UsersScreen.auth = { adminOnly: true };
 export default UsersScreen;

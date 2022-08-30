@@ -57,7 +57,10 @@ export const Layout = ({ title, children }) => {
                   <Menu.Items className="menu-item">
                     {session.user.isAdmin && (
                       <>
-                        <DropdownLink className="dropdown-link" href="/users">
+                        <DropdownLink
+                          className="dropdown-link"
+                          href="/admin/users"
+                        >
                           Users
                         </DropdownLink>
                         <DropdownLink
