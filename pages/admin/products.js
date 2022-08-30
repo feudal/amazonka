@@ -1,17 +1,21 @@
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useQuery } from "react-query";
+import { useState } from "react";
+import { useQuery, useQueryClient } from "react-query";
 
-import { Layout } from "../../components";
+import { EditProductModal, Layout } from "../../components";
 import { getError } from "../../utils";
 
 function ProductsScreen() {
+  const [productId, setProductId] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const queryClient = useQueryClient();
   const {
     isLoading,
     error,
     data: products,
-  } = useQuery("products", async () => {
+  } = useQuery("admin-products", async () => {
     const { data } = await axios.get("/api/admin/products");
     return data;
   });
@@ -65,7 +69,10 @@ function ProductsScreen() {
                   <td className="p-5">
                     <button
                       className="primary-button"
-                      // onClick={() => setIsOpen(true)}
+                      onClick={() => {
+                        setIsOpen(true);
+                        setProductId(product._id);
+                      }}
                     >
                       Edit
                     </button>
@@ -75,6 +82,14 @@ function ProductsScreen() {
             </tbody>
           </table>
         </div>
+      )}
+      {isOpen && (
+        <EditProductModal
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          product={products?.find((product) => product._id === productId)}
+          invalidate={() => queryClient.invalidateQueries("admin-products")}
+        />
       )}
     </Layout>
   );
