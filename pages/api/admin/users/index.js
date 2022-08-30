@@ -1,11 +1,12 @@
+import { getSession } from "next-auth/react";
+
 import { User } from "../../../../models";
 import { db } from "../../../../utils";
-import { getSession } from "next-auth/react";
 
 const handler = async (req, res) => {
   const session = await getSession({ req });
-  if (!session) {
-    res.status(401).send({ message: "Unauthorized" });
+  if (!session || !session.user.isAdmin) {
+    return res.status(401).send({ message: "Admin signing required" });
   } else {
     await db.connect();
     const users = await User.find({});
