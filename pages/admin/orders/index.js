@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 import { useQuery } from "react-query";
 
-import { Layout } from "../../components";
-import { getError } from "../../utils";
+import { Layout } from "../../../components";
+import { getError } from "../../../utils";
 
 function OrdersListScreen() {
   const {
@@ -13,11 +13,9 @@ function OrdersListScreen() {
     error,
     data: orders,
   } = useQuery("orders-list", async () => {
-    const { data } = await axios.get("/api/orders/list");
+    const { data } = await axios.get("/api/admin/orders");
     return data;
   });
-
-  console.log("orders", orders);
 
   return (
     <Layout title="Orders list">
