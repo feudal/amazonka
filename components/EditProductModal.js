@@ -166,7 +166,7 @@ export const EditProductModal = ({ open, onClose, product, invalidate }) => {
           <button className="default-button" onClick={onClose}>
             Cancel
           </button>
-          <button className="primary-button">Edit</button>
+          <button className="primary-button">Save</button>
         </div>
       </form>
     </Modal>
