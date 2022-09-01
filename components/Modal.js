@@ -3,7 +3,7 @@ import { Fragment } from "react";
 
 export const Modal = ({ open, onClose, title, children, button }) => {
   return (
-    <Transition appear show={open} as={Fragment}>
+    <Transition appear show={open} as={Fragment} data-testid="modal">
       <Dialog as="div" className="relative z-10" onClose={onClose}>
         <Transition.Child
           as={Fragment}

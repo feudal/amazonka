@@ -5,7 +5,9 @@ export const DropdownLink = (props) => {
   let { href, children, ...rest } = props;
   return (
     <Link href={href}>
-      <a {...rest}>{children}</a>
+      <a data-testid="dropdown-link" {...rest}>
+        {children}
+      </a>
     </Link>
   );
 };

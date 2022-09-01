@@ -4,7 +4,7 @@ import { PAYMENT_STEPS } from "../utils/app-constants";
 
 export const CheckoutWizard = ({ activeStep = 0 }) => {
   return (
-    <div className="mb-5 flex flex-wrap">
+    <div className="mb-5 flex flex-wrap" data-testid="checkout-wizard">
       {PAYMENT_STEPS.map((step, index) => (
         <div
           key={step}

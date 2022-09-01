@@ -1,9 +1,10 @@
-import { getError } from "../utils";
-import { Modal } from "./Modal";
 import axios from "axios";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+
+import { getError } from "../utils";
+import { Modal } from "./Modal";
 
 export const EditProductModal = ({ open, onClose, product, invalidate }) => {
   const {
@@ -45,6 +46,7 @@ export const EditProductModal = ({ open, onClose, product, invalidate }) => {
   return (
     <Modal open={open} onClose={onClose} title="Edit product">
       <form
+        data-testid="edit-product-modal"
         className="mx-auto max-w-screen-md"
         onSubmit={handleSubmit(submitHandler)}
       >

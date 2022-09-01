@@ -4,7 +4,7 @@ import React from "react";
 
 export const ProductItem = ({ product, addToCartHandler }) => {
   return (
-    <div className="card">
+    <div className="card" data-testid="product-item">
       <Link href={`/product/${product.slug}`}>
         <a className="flex-shrink-0 h-64 overflow-hidden">
           <img
