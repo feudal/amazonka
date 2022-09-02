@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "t": "jest",
-    "tw": "jest --watch"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cypress": "npx cypress open"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
