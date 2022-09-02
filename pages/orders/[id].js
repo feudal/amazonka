@@ -106,7 +106,7 @@ export default function OrderScreen() {
           <div className="md:col-span-3">
             <div className="card p-5">
               <h2 className="mb-2 text-lg">Shipping Address</h2>
-              <div>
+              <div data-testid="shipping-info">
                 <p>{shippingAddress.fullName}</p>
                 <p>{shippingAddress.address}</p>
                 <p>{shippingAddress.city}</p>

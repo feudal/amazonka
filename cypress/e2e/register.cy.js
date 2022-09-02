@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 
 describe("Test registration", () => {
-  const name = faker.name.firstName() + " " + faker.name.lastName();
+  const name = faker.name.fullName();
   const email = faker.internet.email();
   const password = faker.internet.password();
 
