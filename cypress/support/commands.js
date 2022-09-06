@@ -35,6 +35,10 @@ Cypress.Commands.add("addProductInCart", () => {
     .click();
 });
 
+Cypress.Commands.add("messageToastShouldBe", (text) => {
+  cy.get(".Toastify__toast-body div").eq(1).should("have.text", text);
+});
+
 //paypal
 /**
  * Returns an iframe content

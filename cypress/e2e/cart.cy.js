@@ -24,9 +24,7 @@ describe("Test cart", () => {
   it("Adding few products to cart on main page", () => {
     for (let i = 0; i < 5; i++) {
       cy.addProductInCart();
-      cy.get(".Toastify__toast-body div")
-        .eq(1)
-        .should("have.text", "Product added to cart");
+      cy.messageToastShouldBe("Product added to cart");
       cy.get("span.badge").should("have.text", (i + 1).toString());
     }
   });
